@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmacêutica Integrativa - Dra. Ellen Gugliemetti</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background: #f4f4f4;
+            overflow-x: hidden;
+        }
+        .header {
+            background: #004d40;
+            background-size: cover;
+            color: #ffffff;
+            padding: 60px;
+            text-align: center;
+            border-bottom: 4px solid #003d33;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .header img {
+            width: 160px;
+            margin-bottom: 15px;
+            background-color: #b2dfdb;
+            border-radius: 50%;
+            border: 5px solid #9e6e6e94;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .header h2 {
+            margin: 10px 0 0;
+            font-size: 1.5em;
+        }
+        .nav {
+            background: #003d33;
+            color: #ffffff;
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #004d40;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 20;
+        }
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        .hero {
+            background: url('https://img.freepik.com/fotos-gratis/arranjo-de-produtos-de-fitoterapia-alto-angulo_23-2149339770.jpg?t=st=1724652296~exp=1724655896~hmac=6a34ae2dc7cc4ead115b267ca123e71bdd8918b1a9a879c60e8dd8f5abae60b5&w=740');
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: #ffffff;
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+            padding: 100px 20px;
+            min-height: 200px;
+            height: 20vh;
+            background-attachment: fixed;
+        }
+        .hero h2 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 1.1em;
+            margin: 15px 0;
+            line-height: 1.4;
+        }
+        .cta-button {
+            background: #004d40;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1em;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        .cta-button:hover {
+            background: #00796b;
+        }
+        .features, .dicas, .about {
+            padding: 40px 20px;
+            text-align: center;
+            background: #ffffff;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            background-image: url("https://img.freepik.com/fotos-gratis/close-up-medicamento-e-pilulas-na-mesa_23-2148431496.jpg?t=st=1724774175~exp=1724777775~hmac=64028179e6f640483224d60399ceb5a4b7fe4c0ed98803614116f041a103d14f&w=740");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            height: 50vh;
+        }
+        .feature {
+            background: #e0f2f1;
+            border: 1px solid #b2dfdb;
+            border-radius: 8px;
+            padding: 20px;
+            flex: 1;
+            max-width: 30%;
+            margin: 10px;
+            transition: box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateX(50px); /* Da direita para a esquerda */
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .feature.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .feature:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .feature h3 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #004d40;
+        }
+        .feature p {
+            font-size: 1em;
+            line-height: 1.5;
+        }
+        .feature img {
+            max-width: 40%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .dicas {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .dica {
+            background: #b2dfdb;
+            border: 1px solid #80cbc4;
+            border-radius: 8px;
+            padding: 40px;
+            flex: 1;
+            height: 45vh;
+            max-width: 48%;
+            margin: 10px;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateX(-50px); /* Da esquerda para a direita */
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        #dica1 {
+            background-image: url("img/Post\ Praia\ Protetor\ solar\ dermato\ Instagram.jpeg");
+            background-size: cover;
+            background-position: center;
+        }
+        #dica2 {
+            background-image: url("img/Cuidados\ com\ seu\ cabelo\ no\ inverno\ instagram\ post\ \(1\).png");
+            background-size: cover;
+            background-position: top;
+            text-align: left;
+        }
+        #dica3 {
+            background-image: url("img/cabelo.webp");
+            background-size: cover;
+            background-position: center;
+        }
+        .dica.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .dica a {
+            color: #004d40;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 600;
+            display: block;
+            height: 100%;
+            width: 100%;
+            line-height: 1.5;
+        }
+        .about {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+        .about img {
+            border-radius: 50%;
+            max-width: 250px;
+            margin-right: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .about div {
+            max-width: 600px;
+        }
+        .about h2 {
+            font-size: 2em;
+            color: #004d40;
+        }
+        .about p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .footer {
+            background: #004d40;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            border-top: 4px solid #003d33;
+        }
+        .footer p {
+            margin: 0;
+        }
+        .footer a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 40px 20px;
+            }
+            .features, .dicas {
+                flex-direction: column;
+                height: 60vh;
+            }
+            .features .feature, .dicas .dica {
+                max-width: 100%;
+                
+
+                margin: 10px 0;
+            }
+            .about {
+                flex-direction: column;
+            }
+            .about img {
+                margin: 0 0 20px 0;
+            }
+            .nav a {
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="img/dra-ellen.jpg" alt="Dra. Ellen Gugliemetti">
+        <div>
+            <h1>Dra. Ellen Gugliemetti</h1>
+            <h2>Farmacêutica Integrativa</h2>
+        </div>
+    </div>
+
+    <div class="hero">
+        <h2>Bem-vindo(a) à Farmácia Integrativa</h2>
+        <p>Cuidados personalizados para sua saúde e bem-estar.</p>
+        <a href="https://wa.me/555499999999" class="cta-button">Agende uma Consulta</a>
+    </div>
+
+    <div class="about">
+        <img src="img/dra-ellen.jpg" alt="Dra. Ellen Gugliemetti">
+        <div>
+            <h2>Sobre a Dra. Ellen</h2>
+            <p>A Dra. Ellen Gugliemetti é uma renomada farmacêutica integrativa com ampla experiência em cuidados personalizados e serviços de bem-estar. Seu compromisso com a saúde e o equilíbrio dos pacientes é a base de seu trabalho, utilizando abordagens naturais e modernas para promover a cura e o bem-estar.</p>
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="feature">
+            <img src="img/service1.jpg" alt="">
+            <h3>Consultas Personalizadas de Saúde Integrativa</h3>
+            <p>Oferecemos consultas detalhadas para compreender a saúde global do paciente. Utilizamos uma abordagem holística, considerando não apenas os sintomas físicos, mas também o bem-estar mental e emocional.</p>
+        </div>
+        <div class="feature">
+            <img src="img/service2.jpg" alt="">
+            <h3>Orientação e Aconselhamento em Suplementos Naturais</h3>
+            <p>Disponibilizamos orientações especializadas sobre o uso de suplementos naturais e fitoterápicos. Nossa abordagem é baseada em evidências científicas e nas necessidades individuais de cada paciente.</p>
+        </div>
+        <div class="feature">
+            <img src="img/service3.jpg" alt="">
+            <h3>Programas de Prevenção e Bem-Estar</h3>
+            <p>Desenvolvemos e implementamos programas de prevenção e bem-estar personalizados, focados na promoção de hábitos saudáveis e na prevenção de doenças. </p>
+        </div>
+    </div>
+
+    <div class="dicas">
+        <div id="dica1" class="dica">
+            <a href="https://www.instagram.com" target="_blank">
+                
+            </a>
+        </div>
+        <div id="dica2" class="dica">
+            <a href="https://www.instagram.com" target="_blank">
+                
+            </a>
+        </div>
+        <div id="dica3" class="dica">
+            <a href="https://www.instagram.com" target="_blank">
+            
+            </a>
+        </div>
+    </div>
+
+    
+
+    <div class="footer">
+        <p>&copy; 2024 Dra. Ellen Gugliemetti - Todos os Direitos Reservados</p>
+        <a href="https://wa.me/555499999999">WhatsApp: (54) 99999-9999</a>
+    </div>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const features = document.querySelectorAll('.feature');
+            features.forEach(function(feature) {
+                const rect = feature.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    feature.classList.add('show');
+                }
+            });
+
+            const dicas = document.querySelectorAll('.dica');
+            dicas.forEach(function(dica) {
+                const rect = dica.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    dica.classList.add('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
