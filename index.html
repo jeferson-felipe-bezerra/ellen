@@ -367,6 +367,33 @@
                 }
             });
         });
+        document.querySelectorAll('input, textarea, select').forEach((el) => {
+    el.addEventListener('focus', (event) => {
+        event.preventDefault();
+        setTimeout(() => {
+            el.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'nearest'
+            });
+        }, 0);
+    });
+});
+document.addEventListener('focusin', (e) => {
+  if (window.innerHeight < 500) {
+    // Forçar o foco no elemento atual
+    e.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+});
+
+document.addEventListener('touchmove', (e) => {
+  e.preventDefault();
+}, { passive: false });
+
+window.addEventListener('resize', () => {
+  document.body.style.height = window.innerHeight + 'px';
+});
+
     </script>
 </body>
 </html>
